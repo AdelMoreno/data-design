@@ -3,8 +3,10 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Index</title>
+		<link rel="stylesheet" type="text/css" href="styles.css">
 	</head>
 	<body>
+		<h1>Index</h1>
 		<nav>
 				<ul>
 					<li><a href="Adam.php">Adam</a></li>

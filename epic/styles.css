@@ -1,0 +1,10 @@
+h1 {
+	position: center;
+	text-align: center;
+}
+
+.adam {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}

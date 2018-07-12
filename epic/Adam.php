@@ -3,9 +3,11 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>About Adam</title>
+		<link rel="stylesheet" type="text/css" href="styles.css">
 	</head>
 	<body>
-		<img src="adam.jpg" alt="adam masters"/>
+		<h1>About Adam</h1>
+		<img class="adam" src="adam.jpg" alt="adam masters"/>
 		<ul>
 			<li>Adam Masters</li>
 			<li>Male</li>

@@ -3,31 +3,34 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Conceptual Model</title>
+		<link rel="stylesheet" type="text/css" href="styles.css">
 	</head>
 	<body>
-		<p>users</p>
+		<h1>Conceptual Model</h1>
+		<h2>Profile</h2>
 		<ul>
-			<li>userId (primary key)</li>
-			<li>userEmail</li>
-			<li>userPassword</li>
+			<li>profileId (primary key)</li>
+			<li>profileEmail</li>
+			<li>profilePassword</li>
 		</ul>
-		<p>poll</p>
+		<h2>Vote</h2>
 		<ul>
-			<li>doYouVotePoll (primary key)</li>
-			<li>doYouVoteUserId (foreign key)</li>
-			<li>doYouWantVote</li>
-			<li>doYouHaveVote</li>
-			<li>doYouHadVote</li>
+			<li>votePoll (primary key)</li>
+			<li>profileMakeVoteId (foreign key)</li>
+			<li>wantVote</li>
+			<li>haveVote</li>
+			<li>hadVote</li>
 		</ul>
-		<p>Vote</p>
+		<h2>Poll</h2>
 		<ul>
-			<li>countUserId (foreign key)</li>
-			<li>countDoYouVotePoll (foreign key)</li>
+			<li>votePollValue (foreign key)</li>
+			<li>profileVoteId (foreign key)</li>
+			<li>voteCount</li>
 		</ul>
-		<p>Relations</p>
+		<h2>Relations</h2>
 		<ul>
-			<li>One poll can have many users (1 to n)</li>
-			<li>Many users can have many votes (m to n)</li>
+			<li>One profile can make many votes (1 to n)</li>
+			<li>Many polls can have many votes (m to n)</li>
 		</ul>
 		<nav>
 			<a href="index.php">Index</a>
