@@ -2,21 +2,21 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>User Case</title>
+		<title>Use Case</title>
 		<link rel="stylesheet" type="text/css" href="styles.css">
 	</head>
 	<body>
-		<h1>User Case</h1>
-		<h2><strong>Use Case&#58;</strong></h2>
+		<h1>Use Case</h1>
+		<h2><b>Use Case&#58;</b></h2>
 		<p>Adam has decided that it is time to upgrade his phone. He is looking for an easy way to see the specifications for different mobile devices. He would also like to be able to do a side by side comparison. It would also be a plus if there was a polling system that shows how people want, have, or used to have the same model of a device. This way he could see which devices are very popular.</p>
-		<h2><strong>Frustrations&#58;</strong></h2>
+		<h2><b>Frustrations&#58;</b></h2>
 			<ul>
 				<li>Not having all of a phone specifications all on one page</li>
 				<li>Not being able to compare phones side by side</li>
 				<li>Not being able to see that raw data of a phone vs someone reviewing and telling him why he should like something. He wants to draw conclusions for himself.</li>
 				<li>Not being able to see how many other people have or want a specific mobile device</li>
 			</ul>
-		<h2><strong>Interaction Flow&#58;</strong></h2>
+		<h2><b>Interaction Flow&#58;</b></h2>
 			<ul>
 				<li>Adam arrives at the homepage</li>
 				<li>The webpage displays many click-able articles about the most popular phones on the market</li>

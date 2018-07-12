@@ -11,26 +11,25 @@
 		<ul>
 			<li>profileId (primary key)</li>
 			<li>profileEmail</li>
-			<li>profilePassword</li>
+			<li>profileHash</li>
 		</ul>
 		<h2>Vote</h2>
 		<ul>
 			<li>votePoll (primary key)</li>
-			<li>profileMakeVoteId (foreign key)</li>
-			<li>wantVote</li>
-			<li>haveVote</li>
-			<li>hadVote</li>
+			<li>voteProfileId (foreign key)</li>
+			<li>voteType</li>
 		</ul>
-		<h2>Poll</h2>
+		<h2>Phone</h2>
 		<ul>
-			<li>votePollValue (foreign key)</li>
-			<li>profileVoteId (foreign key)</li>
-			<li>voteCount</li>
+			<li>phoneProfileId (foreign key)</li>
+			<li>phoneVotePoll (foreign key)</li>
+			<li>phoneBrand</li>
+			<li>phoneModel</li>
 		</ul>
 		<h2>Relations</h2>
 		<ul>
 			<li>One profile can make many votes (1 to n)</li>
-			<li>Many polls can have many votes (m to n)</li>
+			<li>Many phones can have many votes (m to n)</li>
 		</ul>
 		<nav>
 			<a href="index.php">Index</a>
