@@ -22,15 +22,15 @@
 			<li>doYouHaveVote</li>
 			<li>doYouHadVote</li>
 		</ul>
-		<p>Poll Results</p>
+		<p>Vote</p>
 		<ul>
 			<li>countUserId (foreign key)</li>
 			<li>countDoYouVotePoll (foreign key)</li>
 		</ul>
 		<p>Relations</p>
 		<ul>
-			<li>One poll can have many results (1 to n)</li>
-			<li>Many users can vote on many polls (m to n)</li>
+			<li>One poll can have many users (1 to n)</li>
+			<li>Many users can have many votes (m to n)</li>
 		</ul>
 		<nav>
 			<a href="index.php">Index</a>
