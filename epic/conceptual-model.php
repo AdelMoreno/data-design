@@ -1,12 +1,9 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: adels
- * Date: 7/11/2018
- * Time: 4:40 PM
- */?>
-
+<!DOCTYPE HTML>
 <html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Conceptual Model</title>
+	</head>
 	<body>
 		<p>users</p>
 		<ul>

@@ -1,12 +1,9 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: adels
- * Date: 7/11/2018
- * Time: 4:40 PM
- */?>
-
+<!DOCTYPE HTML>
 <html>
+	<head>
+		<meta charset="UTF-8">
+		<title>User Case</title>
+	</head>
 	<body>
 		<p><strong>Use Case&#58;</strong>Adam has decided that it is time to upgrade his phone. He is looking for an easy way to see the specifications for different mobile devices. He would also like to be able to do a side by side comparison. It would also be a plus if there was a polling system that shows how people want, have, or used to have the same model of a device. This way he could see which devices are very popular.</p>
 		<p><strong>Frustrations&#58;</strong></p>
