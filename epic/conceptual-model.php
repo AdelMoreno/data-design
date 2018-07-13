@@ -15,21 +15,26 @@
 		</ul>
 		<h2>Vote</h2>
 		<ul>
-			<li>votePoll (primary key)</li>
 			<li>voteProfileId (foreign key)</li>
+			<li>votePhoneSpecs (foreign key)</li>
 			<li>voteType</li>
 		</ul>
 		<h2>Phone</h2>
 		<ul>
-			<li>phoneProfileId (foreign key)</li>
-			<li>phoneVotePoll (foreign key)</li>
+			<li>phoneSpecs (primary key)</li>
 			<li>phoneBrand</li>
 			<li>phoneModel</li>
+			<li>phoneCamera</li>
+			<li>phoneScreen</li>
+			<li>phoneProcessor</li>
+			<li>phoneRam</li>
+			<li>phoneMemory</li>
+			<li>phoneBattery</li>
 		</ul>
 		<h2>Relations</h2>
 		<ul>
-			<li>One profile can make many votes (1 to n)</li>
 			<li>Many phones can have many votes (m to n)</li>
+			<li>Many profiles can make many votes (m to n)</li>
 		</ul>
 		<nav>
 			<a href="index.php">Index</a>

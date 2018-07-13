@@ -9,6 +9,8 @@
 		<h1>Use Case</h1>
 		<h2><b>Use Case&#58;</b></h2>
 		<p>Adam has decided that it is time to upgrade his phone. He is looking for an easy way to see the specifications for different mobile devices. He would also like to be able to do a side by side comparison. It would also be a plus if there was a polling system that shows how people want, have, or used to have the same model of a device. This way he could see which devices are very popular.</p>
+		<h2>User Story&#58;</h2>
+		<p>Adam needs a way to compare which phones have the best processor.</p>
 		<h2><b>Frustrations&#58;</b></h2>
 			<ul>
 				<li>Not having all of a phone specifications all on one page</li>
