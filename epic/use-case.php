@@ -13,7 +13,7 @@
 		<p>Adam needs a way to compare which phones have the best processor.</p>
 		<h2><b>Frustrations&#58;</b></h2>
 			<ul>
-				<li>Not having all of a phone specifications all on one page</li>
+				<li>Not having all of a phone specifications all on one page.</li>
 				<li>Not being able to compare phones side by side</li>
 				<li>Not being able to see that raw data of a phone vs someone reviewing and telling him why he should like something. He wants to draw conclusions for himself.</li>
 				<li>Not being able to see how many other people have or want a specific mobile device</li>
