@@ -9,6 +9,7 @@ CREATE TABLE profile (
 	profileHash CHAR(97) NOT NULL,
 	profileEmail VARCHAR(128) NOT NULL,
 	UNIQUE(profileEmail),
+	INDEX(profileId),
 	PRIMARY KEY(profileId)
 );
 
@@ -23,6 +24,9 @@ CREATE TABLE phone (
 	phoneMemory VARCHAR(32),
 	phoneBattery VARCHAR(32),
 	UNIQUE(phoneModel),
+	INDEX(phoneId),
+	INDEX(phoneBrand),
+	INDEX(phoneModel),
 	PRIMARY KEY(phoneId)
 );
 
