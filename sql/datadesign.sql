@@ -23,7 +23,6 @@ CREATE TABLE phone (
 	phoneMemory VARCHAR(32),
 	phoneBattery VARCHAR(32),
 	UNIQUE(phoneModel),
-	INDEX(phoneId),
 	INDEX(phoneBrand),
 	INDEX(phoneModel),
 	PRIMARY KEY(phoneId)

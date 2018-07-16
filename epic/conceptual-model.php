@@ -36,6 +36,7 @@
 			<li>Many phones can have many votes (m to n)</li>
 			<li>Many profiles can make many votes (m to n)</li>
 		</ul>
+		<img src="adam-erd.svg" alt="ERD">
 		<nav>
 			<a href="index.php">Index</a>
 		</nav>
