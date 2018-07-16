@@ -9,7 +9,6 @@ CREATE TABLE profile (
 	profileHash CHAR(97) NOT NULL,
 	profileEmail VARCHAR(128) NOT NULL,
 	UNIQUE(profileEmail),
-	INDEX(profileId),
 	PRIMARY KEY(profileId)
 );
 
