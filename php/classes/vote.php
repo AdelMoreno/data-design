@@ -3,8 +3,10 @@
 require_once("autoload.php");
 require_once(dirname(__DIR__, 2) . "/vendor/autoload.php");
 
-/** @author Adel Moreno Versions 1.0.0 */
-class vote {
+/** @author Adel Moreno <amoreno28@cnm.edu>
+ * Version 1.0.0
+ */
+class Vote {
 	/*this is a foreign key */
 	private $voteProfileId;
 	/*this is a foreign key that with voteProfileId makes a primary key*/
