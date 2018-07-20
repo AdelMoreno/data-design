@@ -124,4 +124,6 @@ class Vote {
 		//store the vote type
 		$this->voteType = $newVoteType;
 	}
+
+
 }
