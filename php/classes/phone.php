@@ -7,16 +7,26 @@ require_once(dirname(__DIR__, 2) . "/vendor/autoload.php");
  * Version 1.0.0
  */
 class Phone {
-	/* this is the primary key*/
+	/**
+	 * id for phone, this is the primary key
+	 * @var Uuid $phoneId
+	 */
 	private $phoneId;
-	/* all of these lines are attributes*/
+	// @var string $phoneBrand
 	private $phoneBrand;
+	// @var string $phoneModel
 	private $phoneModel;
+	// @var string $phoneCamera
 	private $phoneCamera;
+	// @var string $phoneScreen
 	private $phoneScreen;
+	//@var string $phoneProcessor
 	private $phoneProcessor;
+	// @var $phoneRam
 	private $phoneRam;
+	// @var $phoneMemory
 	private $phoneMemory;
+	// @var $phoneBattery
 	private $phoneBattery;
 
 	public function __construct($newPhoneId, string $newPhoneBrand,
@@ -48,6 +58,8 @@ string $newPhoneRam,string $newPhoneMemory,string $newPhoneBattery) {
 	}
 
 	/**
+	 * mutator method for phone id
+	 *
 	 * @param Uuid/string $newPhoneId new value of phone
 	 *
 	 * @throws \RangeException if $newPhoneId is n
@@ -72,9 +84,19 @@ string $newPhoneRam,string $newPhoneMemory,string $newPhoneBattery) {
 	 * @return value of phone brand
 	 **/
 
+
 	public function getPhoneBrand(): string {
 		return ($this->phoneBrand);
 	}
+
+	/**
+	 *  mutator method for phone brand
+	 * @param string $newPhoneBrand new value of phone brand
+	 *
+	 * @throws \InvalidArgumentException if $newPhoneBrand is not a string or insecure
+	 * @throws \RangeException if $newPhoneBrand is > 64 characters
+	 * @throws \TypeError if $newPhoneBrand is not a string
+	 **/
 
 	public function setPhoneBrand (string
 	$newPhoneBrand): void {
@@ -91,6 +113,7 @@ string $newPhoneRam,string $newPhoneMemory,string $newPhoneBattery) {
 	throw(new \RangeException("Phone brand content too large"));
 	}
 
+		//store the phone brand content
 	$this->phoneBrand = $newPhoneBrand;
 }
 
@@ -102,6 +125,15 @@ string $newPhoneRam,string $newPhoneMemory,string $newPhoneBattery) {
 	public function getPhoneModel():string {
 		return($this->phoneModel);
 	}
+
+	/**
+	 *  mutator method for phone model
+	 * @param string $newPhoneModel new value of phone model
+	 *
+	 * @throws \InvalidArgumentException if $newPhoneModel is not a string or insecure
+	 * @throws \RangeException if $newPhoneBrand is > 128 characters
+	 * @throws \TypeError if $newPhoneModel is not a string
+	 **/
 
 	public function setPhoneModel (string
 	$newPhoneModel): void {
@@ -118,6 +150,7 @@ string $newPhoneRam,string $newPhoneMemory,string $newPhoneBattery) {
 			throw(new \RangeException("Phone model content too large"));
 		}
 
+		//store the phone model content
 		$this->phoneModel = $newPhoneModel;
 	}
 
@@ -129,6 +162,15 @@ string $newPhoneRam,string $newPhoneMemory,string $newPhoneBattery) {
 	public function getPhoneCamera():string {
 		return($this->phoneCamera);
 	}
+
+	/**
+	 *  mutator method for phone camera
+	 * @param string $newPhoneCamera new value of phone camera
+	 *
+	 * @throws \InvalidArgumentException if $newPhoneCamera is not a string or insecure
+	 * @throws \RangeException if $newPhoneCamera is > 32 characters
+	 * @throws \TypeError if $newPhoneCamera is not a string
+	 **/
 
 	public function setPhoneCamera (string
 	$newPhoneCamera): void {
@@ -145,6 +187,7 @@ string $newPhoneRam,string $newPhoneMemory,string $newPhoneBattery) {
 			throw(new \RangeException("Phone camera content too large"));
 		}
 
+		//store the phone camera content
 		$this->phoneCamera = $newPhoneCamera;
 	}
 
@@ -157,6 +200,15 @@ string $newPhoneRam,string $newPhoneMemory,string $newPhoneBattery) {
 		return($this->phoneScreen);
 	}
 
+	/**
+	 *  mutator method for phone screen
+	 * @param string $newPhoneScreen new value of phone screen
+	 *
+	 * @throws \InvalidArgumentException if $newPhoneScreen is not a string or insecure
+	 * @throws \RangeException if $newPhoneBrand is > 64 characters
+	 * @throws \TypeError if $newPhoneScreen is not a string
+	 **/
+
 	public function setPhoneScreen (string
 	$newPhoneScreen): void {
 		//verify phone screen content is secure
@@ -167,10 +219,12 @@ string $newPhoneRam,string $newPhoneMemory,string $newPhoneBattery) {
 			throw(new \InvalidArgumentException("PhoneScreen is empty or insecure"));
 		}
 
+		//verify the phone screen content will fit in the database
 		if(strlen($newPhoneScreen) > 64) {
 			throw(new \RangeException("Phone screen content too large"));
 		}
 
+		//store the phone screen content
 		$this->phoneScreen = $newPhoneScreen;
 	}
 
@@ -183,6 +237,15 @@ string $newPhoneRam,string $newPhoneMemory,string $newPhoneBattery) {
 		return($this->phoneProcessor);
 	}
 
+	/**
+	 *  mutator method for phone processor
+	 * @param string $newPhoneProcessor new value of phone processor
+	 *
+	 * @throws \InvalidArgumentException if $newPhoneProcessor is not a string or insecure
+	 * @throws \RangeException if $newPhoneProcessor is > 64 characters
+	 * @throws \TypeError if $newPhoneProcessor is not a string
+	 **/
+
 	public function setPhoneProcessor (string
 	$newPhoneProcessor): void {
 		//verify phone processor content is secure
@@ -193,10 +256,12 @@ string $newPhoneRam,string $newPhoneMemory,string $newPhoneBattery) {
 			throw(new \InvalidArgumentException("PhoneProcessor is empty or insecure"));
 		}
 
+		//verify the phone processor content will fit in the database
 		if(strlen($newPhoneProcessor) > 64) {
 			throw(new \RangeException("Phone processor content too large"));
 		}
 
+		//store the phone processor content
 		$this->phoneProcessor = $newPhoneProcessor;
 	}
 
@@ -209,6 +274,15 @@ string $newPhoneRam,string $newPhoneMemory,string $newPhoneBattery) {
 		return($this->phoneRam);
 	}
 
+	/**
+	 *  mutator method for phone ram
+	 * @param string $newPhoneRam new value of phone ram
+	 *
+	 * @throws \InvalidArgumentException if $newPhoneRam is not a string or insecure
+	 * @throws \RangeException if $newPhoneRam is > 8 characters
+	 * @throws \TypeError if $newPhoneRam is not a string
+	 **/
+
 	public function setPhoneRam (string
 	$newPhoneRam): void {
 		//verify phone ram content is secure
@@ -219,11 +293,13 @@ string $newPhoneRam,string $newPhoneMemory,string $newPhoneBattery) {
 			throw(new \InvalidArgumentException("PhoneRam is empty or insecure"));
 		}
 
+		//verify the phone ram content will fit in the database
 		if(strlen($newPhoneRam) > 8) {
 			throw(new \RangeException("Phone ram content too large"));
 		}
 
-		$this->phoneModel = $newPhoneRam;
+		//store the phone model content
+		$this->phoneRam = $newPhoneRam;
 	}
 
 	/**
@@ -235,6 +311,15 @@ string $newPhoneRam,string $newPhoneMemory,string $newPhoneBattery) {
 		return($this->phoneMemory);
 	}
 
+	/**
+	 *  mutator method for phone memory
+	 * @param string $newPhoneMemory new value of phone memory
+	 *
+	 * @throws \InvalidArgumentException if $newPhoneMemory is not a string or insecure
+	 * @throws \RangeException if $newPhoneMemory is > 32 characters
+	 * @throws \TypeError if $newPhoneMemory is not a string
+	 **/
+
 	public function setPhoneMemory (string
 	$newPhoneMemory): void {
 		//verify phone memory content is secure
@@ -245,11 +330,13 @@ string $newPhoneRam,string $newPhoneMemory,string $newPhoneBattery) {
 			throw(new \InvalidArgumentException("PhoneMemory is empty or insecure"));
 		}
 
+		//verify the phone memory content will fit in the database
 		if(strlen($newPhoneMemory) > 32) {
 			throw(new \RangeException("Phone memory content too large"));
 		}
 
-		$this->phoneModel = $newPhoneMemory;
+		//store the phone memory content
+		$this->phoneMemory = $newPhoneMemory;
 	}
 
 	/**
@@ -261,6 +348,15 @@ string $newPhoneRam,string $newPhoneMemory,string $newPhoneBattery) {
 		return($this->phoneBattery);
 	}
 
+	/**
+	 *  mutator method for phone battery
+	 * @param string $newPhoneBattery new value of phone battery
+	 *
+	 * @throws \InvalidArgumentException if $newPhoneBattery is not a string or insecure
+	 * @throws \RangeException if $newPhoneBattery is > 32 characters
+	 * @throws \TypeError if $newPhoneBattery is not a string
+	 **/
+
 	public function setPhoneBattery (string
 	$newPhoneBattery): void {
 		//verify phone battery content is secure
@@ -271,10 +367,12 @@ string $newPhoneRam,string $newPhoneMemory,string $newPhoneBattery) {
 			throw(new \InvalidArgumentException("PhoneModel is empty or insecure"));
 		}
 
+		//verify the phone battery content will fit in the database
 		if(strlen($newPhoneBattery) > 32) {
 			throw(new \RangeException("Phone model content too large"));
 		}
 
+		//store the phone battery content
 		$this->phoneBattery = $newPhoneBattery;
 	}
 

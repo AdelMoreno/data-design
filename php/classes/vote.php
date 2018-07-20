@@ -7,16 +7,52 @@ require_once(dirname(__DIR__, 2) . "/vendor/autoload.php");
  * Version 1.0.0
  */
 class Vote {
-	/*this is a foreign key */
+	/**
+	 * id of the profile that made the vote, this is a foreign key
+	 * @var Uuid $voteProfileId
+	 **/
 	private $voteProfileId;
-	/*this is a foreign key that with voteProfileId makes a primary key*/
+	/**
+	 * id of the phone that gets the vote, this is a foreign key
+	 * @var Uuid $votePhoneId
+	 **/
 	private $votePhoneId;
+	/**
+	 * type of the vote that was made
+	 * @var string $voteType
+	 **/
 
 	public $voteType;
+
+	public function __construct($newVoteProfileId, $newVotePhoneId,
+		 string $newVoteType) {
+		try{
+			$this->setVoteProfileId($newVoteProfileId);
+			$this->setVotePhoneId($newVotePhoneId);
+			$this->setVoteType($newVoteType);
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			$exceptionType = get_class($exception);
+			throw(new $exceptionType($exception->getMessage(), 0, $exception));
+		}
+	}
+
+	/**
+	 * accessor method for voteProfileId
+	 *@return Uuid value of vote profile id
+	 **/
 
 	public function getVoteProfileId():string {
 		return ($this->voteProfileId);
 	}
+
+	/**
+	 * mutator method for vote profile id
+	 *
+	 * @param Uuid/string $newVoteProfileId new value of vote profile id
+	 *
+	 * @throws \RangeException if $newVoteProfileId is n
+	 * @throws \TypeError if $newVoteProfileId is not a uuid
+	 **/
 
 	public function setVoteProfileId($newVoteProfileId) : void {
 		try {
@@ -26,12 +62,28 @@ class Vote {
 			$exceptionType = get_class($exception);
 			throw(new $exceptionType($exception->getMessage(), 0, $exception));
 		}
+
+		//convert and store the phone id
 		$this->voteProfileId = $uuid;
 	}
+
+	/**
+	 * accessor method for votePhoneId
+	 *@return Uuid value of vote phone id
+	 **/
 
 	public function getVotePhoneId():Uuid {
 		return($this->votePhoneId);
 	}
+
+	/**
+	 * mutator method for vote phone id
+	 *
+	 * @param Uuid/string $newVotePhoneId new value of vote phone id
+	 *
+	 * @throws \RangeException if $newVotePhoneId is n
+	 * @throws \TypeError if $newVotePhoneId is not a uuid
+	 **/
 
 	public function setVotePhoneId($newVotePhoneId) : void {
 		try {
@@ -41,8 +93,15 @@ class Vote {
 			$exceptionType = get_class($exception);
 			throw(new $exceptionType ($exception->getMessage(), 0, $exception));
 		}
+
+		//convert and store the phone id
 		$this->votePhoneId = $uuid;
 	}
+
+	/**
+	 * accessor method for voteType
+	 *@return string value of vote type
+	 **/
 
 	public function getVoteType():string {
 		return($this->voteType);
@@ -62,6 +121,7 @@ class Vote {
 			throw(new \RangeException("Vote type content too large"));
 		}
 
+		//store the vote type
 		$this->voteType = $newVoteType;
 	}
 }

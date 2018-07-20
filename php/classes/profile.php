@@ -8,11 +8,20 @@ require_once (dirname(__DIR__,2) . "/vendor/autoload.php");
  * Version 1.0.0
  **/
 class Profile {
-	//id for this profile, this is the primary key
+	/**
+	 * id for this profile, this is the primary key
+	 * @var Uuid $profileId
+	 **/
 	private $profileId;
-	// this is the user's password
+	/**
+	 * this is the user's password
+	 * @var string $profileHash
+	 **/
 	private $profileHash;
-	// this is the user's email
+	/**
+	 * this is the user's email
+	 * @var string$profileEmail
+	 **/
 	private $profileEmail;
 
 
