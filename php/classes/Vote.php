@@ -126,4 +126,144 @@ class Vote {
 	}
 
 
+
+/**
+ * inserts this Vote into mySQL
+ *
+ * @param \PDO $pdo PDO connection object
+ * @throws \PDOException when mySQL related erros occur
+ * @throws \TypeError if $pdo is not a PDO connection object
+ **/
+
+public function insert(\PDO $pdo) : void {
+
+	// create query template
+	$query = "INSERT INTO vote(voteProfileId, votePhoneId, voteType) VALUES(:voteProfileId, :votePhoneId, :voteType)";
+	$statement = $pdo->prepare($query);
+
+	//bind the member variables to the place holders in the template
+	$parameters = ["voteProfileId" => $this->voteProfileId->getBytes(), "votePhoneId" => $this->votePhoneId, "voteType" => $this->voteType];
+	$statement->execute($parameters);
 }
+
+/**
+ * deletes this Vote from mySQL
+ *
+ * @param \PDO $pdo PDO connection object
+ * @throws \PDOException when mySQL related errors occur
+ * @throws \TypeError if $pdo is not a PDO connection object
+ **/
+public function delete(\PDO $pdo) : void {
+
+	//create query template
+	$query = "DELETE FROM vote WHERE voteType = :voteType";
+	$statement = $pdo->prepare($query);
+
+	//bind the member variables to the place holder in the template
+	$parameters = ["voteType" => $this->voteType->getBytes()];
+	$statement->execute($parameters);
+}
+
+/**
+ * updates this Vote in mySql
+ *
+ * @param \PDO $pdo PDO connection object
+ * @throws \PDOException when mySQL related errors occur
+ * @throws \TypeError if $pdo is not a PDO connection object
+ **/
+public function update(\PDO $pdo) :void {
+
+	//create query template
+	$query = "UPDATE vote SET voteProfileId = :voteProfileId, votePhoneId = :votePhoneId, voteType = :voteType WHERE voteType = :voteType";
+	$statement = $pdo->prepare($query);
+
+	$parameters = ["voteProfileId" => $this->voteProfileId->getBytes(), "votePhoneId" => $this->votePhoneId, "voteType" => $this->voteType];
+	$statement->execute($parameters);
+}
+
+/**
+ * get the Vote by voteProfileId
+ *
+ * @param \PDO $pdo PDO connection object
+ * @param Uuid|string $voteProfileId vote profile id to search for
+ * @return Vote|null Vote found or null if not found
+ * @throws \PDOException when mySQL related errors occur
+ * @throws \TypeError when a variable is not the correct data type
+ **/
+public static function getVoteByVoteProfileId(\PDO $pdo, $voteProfileId) : ?Profile {
+	// sanitize the profileId before searching
+	try {
+		$voteProfileId = self::validateUuid($voteProfileId);
+	} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+		throw(new \PDOException($exception->getMessage(), 0, $exception));
+	}
+
+	//create query template
+	$query = "SELECT voteProfileId, votePhoneId, voteType FROM vote WHERE voteProfileId= :voteProfileId";
+	$statement = $pdo->prepare($query);
+
+	//bind the profile id to the place holder in the template
+	$parameters = ["voteProfileId" => $voteProfileId->getBytes()];
+	$statement->execute($parameters);
+
+	//grab the profile from mySQL
+	try {
+		$vote = null;
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		$row = $statement->fetch();
+		if($row !== false) {
+			$vote = new Vote($row["voteProfileId"], $row["votePhoneId"], $row["voteType"]);
+		}
+	} catch(\Exception $exception) {
+		// if the row couldn't be converted, rethrow it
+		throw(new \PDOException($exception->getMessage(), 0, $exception));
+	}
+	return($vote);
+}
+
+/**
+ * gets the Vote by voteType
+ *
+ * @param \PDO $pdo PDO connection object
+ * @param string $voteType vote to search for
+ * @return \SplFixedArray SPLFixedArray of Votes found
+ * @throws \PDOException when mySQL related errors occur
+ * @throws \TypeError when variable are no the correct data type
+ **/
+public static function getVoteByVoteType(\PDO $pdo, string $voteType) : \SplFixedArray {
+	// sanitize the description before searching
+	$voteType = trim($voteType);
+	$voteType = filter_var($voteType, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+	if(empty($voteType) === true) {
+		throw(new \PDOException("email is invalid"));
+	}
+
+	// escape any mySQL wild cards
+	$voteType = str_replace("_", "\\_", str_replace("%", "\\%", $voteType));
+
+	//create query template
+	$query = "SELECT voteProfileId, votePhoneId, voteType FROM vote WHERE voteType LIKE :voteType";
+	$statement = $pdo->prepare($query);
+
+	//bind the vote to the place holder in the template
+	$voteType = "%voteType%";
+	$parameters = ["voteType" => $voteType];
+	$statement->execute($parameters);
+
+	// build an array of votes
+	$votes = new \SplFixedArray($statement->rowCount());
+	$statement->setFetchMode(\PDO::FETCH_ASSOC);
+	while(($row = $statement->fetch()) !== false) {
+		try{
+			$vote = new Vote($row["voteProfileId"], $row["votePhoneId"], $row["voteType"]);
+			$votes[$votes->key()] = $vote;
+		} catch(\Exception $exception) {
+			// if the row couldn't be converted, rethrow it
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+	}
+	return ($votes);
+}
+
+};
+

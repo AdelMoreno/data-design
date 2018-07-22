@@ -149,7 +149,7 @@ class Profile {
 	public function insert(\PDO $pdo) : void {
 
 		// create query template
-		$query = "INSERT INTO profile(profileId, profileHash, profileEmail) VALUES(:profileId, :profileHash, profileEmail)";
+		$query = "INSERT INTO profile(profileId, profileHash, profileEmail) VALUES(:profileId, :profileHash, :profileEmail)";
 		$statement = $pdo->prepare($query);
 
 		//bind the member variables to the place holders in the template
@@ -166,7 +166,7 @@ class Profile {
 	 **/
 	public function delete(\PDO $pdo) : void {
 
-		//creat query template
+		//create query template
 		$query = "DELETE FROM profile WHERE profileId = :profileId";
 		$statement = $pdo->prepare($query);
 
@@ -210,7 +210,7 @@ class Profile {
 		}
 
 		//create query template
-		$query = "SELECT profileId, profileHash, profileEmail FROM profile WHERE = :profileId";
+		$query = "SELECT profileId, profileHash, profileEmail FROM profile WHERE profileId= :profileId";
 		$statement = $pdo->prepare($query);
 
 		//bind the profile id to the place holder in the template
@@ -239,7 +239,7 @@ class Profile {
 	 * @param string $profileEmail email to search for
 	 * @return \SplFixedArray SPLFixedArray of Profiles found
 	 * @throws \PDOException when mySQL related errors occur
-	 * @throws \TypeError when varieable are no the correct data type
+	 * @throws \TypeError when variable are no the correct data type
 	 **/
 	public static function getProfileByEmail(\PDO $pdo, string $profileEmail) : \SplFixedArray {
 		// sanitize the description before searching
@@ -266,7 +266,8 @@ class Profile {
 		$statement->setFetchMode(\PDO::FETCH_ASSOC);
 		while(($row = $statement->fetch()) !== false) {
 			try{
-				$profile = new Profile($row["profileId"], $row["profileHash"], ["profileEmail"]);
+				$profile = new Profile($row["profileId"], $row["profileHash"], $row["profileEmail"]);
+				$profiles[$profiles->key()] = $profile;
 			} catch(\Exception $exception) {
 				// if the row couldn't be converted, rethrow it
 				throw(new \PDOException($exception->getMessage(), 0, $exception));
