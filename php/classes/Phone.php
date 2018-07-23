@@ -5,7 +5,7 @@ require_once("autoload.php");
 require_once(dirname(__DIR__, 1) . "/classes/autoload.php");
 
 require_once ("autoload.php");
-require_once (dirname(__DIR__,1) . "../vendor/autoload.php");
+require_once (dirname(__DIR__,2) . "../vendor/autoload.php");
 
 use Ramsey\Uuid\Uuid;
 
